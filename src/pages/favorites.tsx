@@ -23,7 +23,7 @@ const FavoritesPage: NextPage = () => {
           <div className="title -custom">FAVORITOS</div>
         </div>
 
-        <div className="character-favorites">
+        <div className="character-favorites container">
           {favorite.length > 0 ? (
             <div className="characters-list">
               {favorite.map((character) => (

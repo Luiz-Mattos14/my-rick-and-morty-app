@@ -3,6 +3,7 @@
 
   @include media("sm") {
     max-width: 72rem;
+    padding: 0;
   }
 
   .characters-list {
