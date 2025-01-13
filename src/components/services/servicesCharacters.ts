@@ -12,10 +12,10 @@ export const fetchCharacters = async (): Promise<CharacterType[]> => {
       throw new Error(`Erro ao buscar personagens: ${response.statusText}`);
     }
     const data = await response.json();
-    return data.results || []; // Ajuste de acordo com a estrutura da resposta da API
+    return data.results || [];
   } catch (error) {
     console.error("Erro na fetch:", error);
-    return []; // Retorna um array vazio caso haja erro
+    return [];
   }
 };
 

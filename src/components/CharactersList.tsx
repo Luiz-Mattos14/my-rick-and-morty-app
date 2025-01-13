@@ -60,7 +60,7 @@ const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
         </div>
       </div>
 
-      <div className="charactersList">
+      <div className={`characters-list ${!notFound ? "no-return" : ""}`}>
         {notFound ? (
           <div className="return-filter">
             <h2>Nada foi encontrado.</h2>

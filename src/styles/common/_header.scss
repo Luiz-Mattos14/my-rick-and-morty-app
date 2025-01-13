@@ -4,6 +4,7 @@
   width: 100%;
   height: 6.4rem;
   background: var(--black-2);
+  z-index: 9;
 
   > .container {
     display: flex;
@@ -25,6 +26,8 @@
     border: 1px solid var(--gray-1);
     font-size: 1.4rem;
     font-weight: 600;
+    width: auto;
+    height: 4rem;
     transition: all linear 0.3s;
 
     &.active,
@@ -50,22 +53,23 @@
   }
 
   > .container .actions .link-home {
-    width: auto;
     padding: 1.2rem 1.2rem 1.2rem 1.6rem;
     border-radius: 1rem 0 0 1rem;
-
-    @include media("md") {
-      width: 9.9rem;
-    }
   }
 
   > .container .actions .link-favorite {
-    width: auto;
     padding: 1.2rem 1.2rem 1.2rem 2.2rem;
     border-radius: 0 1rem 1rem 0;
 
-    @include media("md") {
-      width: 14.9rem;
+    .favorite-count {
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.4rem;
+      line-height: -0.01px;
+      margin-left: 0.8rem;
+      border-radius: 50%;
+      border: 1px solid currentColor;
     }
   }
 }
