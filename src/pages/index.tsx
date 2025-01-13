@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { ReactNode } from "react";
+import Header from "@/components/Header";
 import CharacterList from "@/components/CharactersList";
 import {
   CharacterType,
@@ -25,7 +26,13 @@ const Home: NextPage = (props: {
         <link rel="icon" href="/favicon.icon" />
       </Head>
 
-      <main>{<CharacterList characters={props.characters!} />}</main>
+      <Header />
+
+      <main>
+        <div className="container">
+          {<CharacterList characters={props.characters!} />}
+        </div>
+      </main>
     </>
   );
 };

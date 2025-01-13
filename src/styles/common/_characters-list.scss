@@ -1,0 +1,41 @@
+@import "./character-card";
+
+.actions-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 72rem;
+  margin: 3rem auto;
+
+  @include media("md") {
+    flex-direction: row;
+  }
+}
+
+.actions-wrapper .search input {
+  background: transparent;
+  border: 1px solid #3d3d3d;
+  height: 4.8rem;
+  width: 32rem;
+  border-radius: 1rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.charactersList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+
+  @include media("sm") {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 72rem;
+  }
+}

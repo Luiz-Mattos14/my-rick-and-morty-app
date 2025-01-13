@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CharacterCard from "./CharacterCard";
 import {
   CharacterType,
@@ -15,9 +15,16 @@ const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
     useState<CharacterType[]>(characters);
   const [notFound, setNotFound] = useState(false);
 
-  const handleSearch = async () => {
+  const handleSearch = async (query: string) => {
+    if (query.trim() === "") {
+      // Reseta os resultados caso o campo esteja vazio
+      setFilteredCharacters(characters);
+      setNotFound(false);
+      return;
+    }
+
     try {
-      const results = await fetchCharactersByName(search);
+      const results = await fetchCharactersByName(query);
       if (results.length === 0) {
         setNotFound(true);
         setFilteredCharacters([]);
@@ -31,18 +38,25 @@ const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
     }
   };
 
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      handleSearch(search);
+    }, 300); // Delay de 300ms para evitar chamadas excessivas
+
+    return () => clearTimeout(delayDebounce); // Limpa o timeout para evitar buscas acumuladas
+  }, [search]);
+
   return (
     <>
-      <div className="actions">
-        <div className="text">INÍCIO</div>
+      <div className="actions-wrapper">
+        <div className="title -custom">INÍCIO</div>
         <div className="search">
           <input
             type="text"
-            placeholder="Digite o nome do personagem"
+            placeholder="Pesquisar"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button onClick={handleSearch}>Buscar</button>
         </div>
       </div>
 
