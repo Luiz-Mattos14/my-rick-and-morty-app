@@ -1,7 +1,22 @@
-import { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { ReactNode } from "react";
+import CharacterList from "@/components/CharactersList";
+import {
+  CharacterType,
+  fetchCharacters,
+} from "@/components/services/servicesCharacters";
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const characters = await fetchCharacters();
+
+  return { props: { characters } };
+};
+
+const Home: NextPage = (props: {
+  children?: ReactNode;
+  characters?: CharacterType[];
+}) => {
   return (
     <>
       <Head>
@@ -10,9 +25,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.icon" />
       </Head>
 
-      <main>
-        <h1>HOME</h1>
-      </main>
+      <main>{<CharacterList characters={props.characters!} />}</main>
     </>
   );
 };

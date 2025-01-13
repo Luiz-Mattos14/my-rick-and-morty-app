@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")], // Adiciona a pasta "styles" ao caminho
   },
+  images: {
+    domains: ["rickandmortyapi.com"],
+  },
 };
 
 export default nextConfig;
